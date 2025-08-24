@@ -1,26 +1,81 @@
 # Toxicity-Analysis-Engine-for-Online-Platform
-A web-based system that detects and filters toxic or offensive comments in online text content. Built with JavaScript, HTML, CSS for the frontend and a Flask (Python) API for the backend.
+📌 Features
+✅ Classifies input text into six bullying categories:
+toxic
+severe_toxic
+obscene
+threat
+insult
+identity_hate
+🧠 Uses fine-tuned BERT (bert-base-uncased)
+💬 Supports both web UI and chat interface
+📈 Model trained on 150,000+ social media comments
+🌐 RESTful API using Flask + CORS
+📂 Project Structure
+Toxicity-Analysis-Engine-for-Online-Platform/
+├── app.py                # Flask backend with BERT model
+├── Bert.hdfs             # Fine-tuned BERT model directory
+├── requirements.txt      # Python dependencies
+├── templates/            # HTML frontend (if applicable)
+├── static/               # CSS/JS assets (optional)
+└── README.md             # Project documentation
+⚙️ Installation
+Clone the repository
 
-🔹 Features
+git clone https://github.com/your-username/Toxicity-Analysis-Engine-for-Online-Platform.git
+cd Toxicity-Analysis-Engine-for-Online-Platform
+**Download Bert.hdfs dataset **
 
-⚡ Real-time toxicity detection for user-generated text
+Use the following link to download the folder containing config.json and Dataset file:
+https://drive.google.com/drive/folders/1_zAqmicvePnifjnF9gMIL9ukIdvSpmCq?usp=sharing
+Set up a virtual environment (optional but recommended)
 
-🧹 Data collection & cleaning pipeline for training
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+Install required packages
 
-🤖 Machine learning model to identify harmful/abusive content
+pip install -r requirements.txt
+Download or place the fine-tuned model Ensure Bert.hdfs (your fine-tuned model folder) is in the root directory.
 
-🔒 Supports automatic moderation to enhance user safety
+▶️ Running the App
+python app.py
+The server will start at http://localhost:5000
+🧪 API Usage
+Endpoint: /process_text
+Method: POST
+Content-Type: application/json
 
-🌐 Simple, intuitive web interface
+🔸 Sample Request
+{
+  "input_text": "You're such an idiot and a complete failure!"
+}
+🔸 Sample Response
+{
+  "original_text": "You're such an idiot and a complete failure!",
+  "predictedLables": ["toxic", "insult"],
+  "status": 2
+}
+🧠 Model Details
+Architecture: BERT (bert-base-uncased)
+Task: Multi-label text classification
+Dataset: 1.5 lakh annotated social media comments
+Output: 6-dimensional binary vector
+Framework: PyTorch + Transformers
+📈 Evaluation Metrics
+During training and evaluation, the following metrics were used:
 
-🔧 Tech Stack
-
-Frontend: JavaScript, HTML, CSS
-
-Backend: Python, Flask API
-
-ML/NLP: Text preprocessing & toxicity detection model
-
-🎯 Goal
-
-To improve online community health by reducing exposure to harmful content through automated moderation.
+Accuracy
+Precision
+Recall
+F1 Score
+📚 Future Enhancements
+Add frontend with styled UI
+Enable file upload or batch detection
+Add login/authentication for moderation dashboards
+Visualize results with charts (toxicity trends)
+🤝 Acknowledgements
+Hugging Face Transformers
+Jigsaw Toxic Comment Dataset
+Flask & PyTorch communities
+📜 License
+This project is licensed under the MIT License.
